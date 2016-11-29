@@ -1,11 +1,7 @@
-FROM centos:latest
+FROM node:latest
 
-MAINTAINER  Abhinav Kumar <akumar@sprinklr.com>
+MAINTAINER  Abhinav Kumar
 
-RUN yum -y install epel-release
-RUN yum -y install nginx
-RUN yum clean all
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-CMD ["/usr/sbin/nginx"]
-
-EXPOSE 80
+COPY files/app.js /opt/app.js
+CMD ["/usr/local/bin/node","/opt/app.js"]
+EXPOSE 8080
